@@ -123,7 +123,7 @@
                     <li class="has-submenu">
                         <a href="#"> <i class="mdi mdi-black-mesa"></i>File Management<div class="arrow-down"></div></a>
                         <ul class="submenu">
-                            <li><a href="#">File List</a></li>
+                            <li><a href="{{route('admin:files')}}">File List</a></li>
                         </ul>
                     </li>
                 </ul>

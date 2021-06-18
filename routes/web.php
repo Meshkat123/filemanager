@@ -15,6 +15,9 @@ Route::namespace($namespace)->name('admin:')->middleware(['auth:web'])->group(fu
     /************************* Site Settings ******************************/
 	Route::get('/site/setup','SettingController@Index')->name('setup_site');
 	Route::post('/updateSettingForums','SettingController@updateSettingForums')->name('updateSettingForums');
+	
+	/************************* File Management ******************************/
+	Route::get('/files','FileManageController@Index')->name('files');
 });
 
 Auth::routes();
