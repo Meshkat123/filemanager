@@ -20,6 +20,7 @@
                     </a>
                     <p>Secret</p>
                     <p>
+                        <a href="#" class="far fa-eye" style="padding:7px 5px;"></a>
                         <a href="#" class="far fa-edit" style="padding:7px 5px;"></a>
                         <a href="#" class="far fa-trash-alt" style="padding:7px 5px;"></a> 
                     </p>
