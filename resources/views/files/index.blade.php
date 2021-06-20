@@ -58,12 +58,12 @@
 										<input type="color" class="form-control" name="color_code" placeholder="File Color Code">
 									</div>
 								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<!-- <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
 									<div class="form-group">
 										<label>Password (optional)</label>
 										<input type="text" class="form-control" name="password" placeholder="File Password to protect">
 									</div>
-								</div>
+								</div> -->
 							</div>
 							<div class="row mb-4" style="justify-content: center;">
 								<p class="btn btn-info" onClick="appendRow()"><i class="fa fa-plus"></i>Add Row</button>

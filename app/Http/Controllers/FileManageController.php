@@ -35,27 +35,31 @@ class FileManageController extends Controller
         return View('files.details',compact('title','getFiledoc','id'));
     }
     public function saveFile(Request $request){
+        
         // return $request['doc_file'][1];
-
+        // return pathinfo(asset($request['doc_file'][0]), PATHINFO_EXTENSION);
+        // return $request['doc_file'][0]->getSize();
+        $getType = FileType::get();
         $create = New File();
 
         $create->title          = $request->title;
         $create->color_code 	= $request->color_code;
-        $create->password 	    = $request->password;
+        // $create->password 	    = $request->password;
 
         $create->save();
 
 
         for ($e= 0; $e < count($request->get('doc_title')); $e++){
             $insert                 = New FileDoc();
-
             $docoment   			= $request['doc_file'][$e];
             if($docoment){
+
                 $doc                = rand().$request['doc_file'][$e]->getClientOriginalName();
                 $destination        = 'uploads/'.$request->title.'/';
                 $request['doc_file'][$e]->move($destination, $doc);
 
                 $insert->doc_file   = $destination.'/'.$doc;
+
             }
             $insert->file_id 	    = $create->id;
             $insert->title 	        = $request['doc_title'][$e];
