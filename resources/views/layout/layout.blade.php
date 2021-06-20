@@ -12,6 +12,7 @@
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
     <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet">
     @notifyCss
     @yield('css')
 
@@ -68,6 +69,7 @@
         <script src="{{asset('admin/libs/custombox/custombox.min.js')}}"></script>
     <!-- App js -->
     <script src="{{asset('admin/js/app.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();

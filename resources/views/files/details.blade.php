@@ -3,32 +3,50 @@
 <div class="row" style="margin-top: 1%;margin-bottom:50px;">
     <div class="col-12">
         <div class="card-box">
-        	<div class="row">
-        		<div class="col-10">
-		            <h4 class="header-title text-center">{{$title}}</h4>
+			<div class="row mb-4">
+        		<div class="col-8">
+					<form method="get" action="{{ route('admin:DocSearch') }}" enctype="multipart/form-data">
+						<input type="hidden" name="id" placeholder="Search with title" value={{ $id }}>
+						<span><input type="text" name="serch" placeholder="Search with title" style="width:70%; border:1px solid whitesmoke;padding:7px;"></span>
+						<span><button type="submit" class="btn btn-primary">search</button></span>
+					</form>
 		        </div>
-		        <div class="col-2">
-		            <a href="#create-modal" class="btn btn-primary waves-effect waves-light" data-animation="door" data-plugin="custommodal"data-overlaySpeed="100" data-overlayColor="#36404a" style="color: white;float: right;"><i class="fas fa-plus"></i> Create</a>
+		        <div class="col-4">
+		            <a href="{{ url('file/document/filter?id='.$id.'&filter=a') }}" class="btn btn-danger"><i class="fas fa-arrow-up"></i> A </a>
+					<a href="{{ url('file/document/filter?id='.$id.'&filter=d') }}" class="btn btn-warning"><i class="fas fa-arrow-down"></i> D </a>
+					<a href="" class="btn btn-success"><i class="fas fa-sync-alt"></i></a>
+					<a href="#create-modal" class="btn btn-primary waves-effect waves-light" data-animation="door" data-plugin="custommodal"data-overlaySpeed="100" data-overlayColor="#36404a" style="color: white;float: right;"><i class="fas fa-plus"></i> Create</a>
 		        </div>
 	        </div>
 
             <div class="row" style="padding-top:15px;">
-                @foreach($getFiles as $files)
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" style="border:1px solid gray;padding:20px;" id="row{{$files->id}}">
-                    <a href="{{route('admin:files.details',$files->id)}}">
-                        <i class="fa fa-folder-open" style="font-size:50px;" data-toggle="tooltip" title="Secret"></i>
+                @foreach($getFiledoc as $Filedoc)
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 text-center" style="border:1px solid gray;padding:20px;" id="row{{$Filedoc->id}}">
+                    <a href="{{asset($Filedoc->doc_file)}}" target="_blank">
+                        <center>
+							@if(pathinfo(asset($Filedoc->doc_file), PATHINFO_EXTENSION) == 'docx' || 
+								pathinfo(asset($Filedoc->doc_file), PATHINFO_EXTENSION) == 'doc' ||
+								pathinfo(asset($Filedoc->doc_file), PATHINFO_EXTENSION) == 'pdf' ||
+								pathinfo(asset($Filedoc->doc_file), PATHINFO_EXTENSION) == 'xlsx'
+								)
+								<i class="fas fa-file-import" style="font-size: 190px;"></i>
+							@else
+							<img src="{{asset($Filedoc->doc_file)}}" style="height:200px;">
+							@endif
+                        </center>
                     </a>
-                    <p>{{$files->title}}</p>
+                    <p>{{$Filedoc->title}}</p>
                     <p>
-                        <a href="{{route('admin:files.details',$files->id)}}" class="far fa-eye" style="padding:7px 5px;"></a>
-                        <a href="#edit-modal" onclick="editFile({{$files->id}})" type="button" class="waves-effect waves-light far fa-edit"  data-animation="door" data-plugin="custommodal" data-overlaySpeed="100" data-overlayColor="#36404a" style="padding:7px 5px;"></a>
-                        <a href="#" class="far fa-trash-alt btn_delete" style="padding:7px 5px;" attr="{{$files->id}}"></a> 
+                        <a href="{{asset($Filedoc->doc_file)}}" class="fas fa-download" style="padding:7px 5px;"  target="_blank"></a>
+                        <a href="{{asset($Filedoc->doc_file)}}" class="far fa-eye" style="padding:7px 5px;"  target="_blank"></a>
+                        <!-- <a href="#" class="far fa-edit" style="padding:7px 5px;"></a> -->
+                        <a href="#" class="far fa-trash-alt btn_delete" style="padding:7px 5px;" attr="{{$Filedoc->id}}"></a> 
                     </p>
                 </div>
                 @endforeach
             </div>
 			<div class="row" style="padding-top:15px;">
-			{{ $getFiles->links() }}
+			{{ $getFiledoc->links() }}
 			</div>
         </div>
 
@@ -41,30 +59,11 @@
             </button>
             <h4 class="custom-modal-title">Create {{$title}}</h4>
             <div class="text-muted">
-                <form method="POST" action="{{ route('admin:saveFile') }}" enctype="multipart/form-data">
+			<form method="POST" action="{{ route('admin:saveDoc') }}" enctype="multipart/form-data">
 		            @csrf()
 					<div class="card m-0">
 						<div class="card-body">
-							<div class="row gutters">
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-									<div class="form-group">
-										<label>Tile</label>
-										<input type="text" class="form-control" name="title" placeholder="File Title" required="">
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-									<div class="form-group">
-										<label>Color Code (optional)</label>
-										<input type="color" class="form-control" name="color_code" placeholder="File Color Code">
-									</div>
-								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-									<div class="form-group">
-										<label>Password (optional)</label>
-										<input type="text" class="form-control" name="password" placeholder="File Password to protect">
-									</div>
-								</div>
-							</div>
+						<input type="hidden" class="form-control" name="file_id" placeholder="File Title" value="{{ $id }}" required="">
 							<div class="row mb-4" style="justify-content: center;">
 								<p class="btn btn-info" onClick="appendRow()"><i class="fa fa-plus"></i>Add Row</button>
 							</div>
@@ -90,15 +89,7 @@
 				</form>
             </div>
         </div>
-		<div id="edit-modal" class="modal-demo">
-            <button type="button" class="close" onclick="Custombox.modal.close();">
-                <span>&times;</span><span class="sr-only">Close</span>
-            </button>
-            <h4 class="custom-modal-title">Create {{$title}}</h4>
-            <div class="text-muted edit_form">
-                
-            </div>
-        </div>
+
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -118,11 +109,11 @@
 		  if (result.value) {
 		  	$('#row'+id).hide();
 			$.ajax({
-				url: "{{ url('/file/delete') }}"+'/'+id,
+				url: "{{ url('/file/doc/delete') }}"+'/'+id,
 				success:function(result){
 					Swal.fire(
 				      'Deleted!',
-				      'Your File has been deleted.',
+				      'Your Image has been deleted.',
 				      'success'
 				    )
 				}
@@ -178,16 +169,6 @@
 										'<input type="file" name="doc_file[]" class="form-control" />'+
 									'</div>'+
 								'</div>');
-	}
-</script>
-<script>
-	function editFile(id){
-		$.ajax({
-			url: "{{ url('/file/edit') }}"+'/'+id,
-			success:function(result){
-				$('.edit_form').html(result);
-			}
-		});
 	}
 </script>
 @stop
