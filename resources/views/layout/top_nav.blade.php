@@ -86,18 +86,34 @@
             <div class="logo-box">
                 <a href="{{route('admin:index')}}" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        <img src="{{asset('admin/images/logo.png')}}" alt="" style="height: 22px;display: initial;">
+                        @if(setting()->logo)
+                        <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
+                        @else
+                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        @endif
                     </span>
                     <span class="logo-sm">
-                        <img src="{{asset('admin/images/logo-sm.png')}}" alt="" style="height: 22px;display: initial;">
+                        @if(setting()->logo)
+                        <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
+                        @else
+                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        @endif
                     </span>
                 </a>
                 <a href="{{route('admin:index')}}" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        <img src="{{asset('admin/images/logo-light.png')}}" alt="" style="height: 22px;display: initial;">
+                        @if(setting()->logo)
+                        <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
+                        @else
+                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        @endif
                     </span>
                     <span class="logo-sm">
-                        <img src="{{asset('admin/images/logo-sm-light.png')}}" alt="" style="height: 22px;display: initial;">
+                        @if(setting()->logo)
+                        <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
+                        @else
+                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        @endif
                     </span>
                 </a>
             </div>

@@ -16,8 +16,7 @@
     <link href="{{asset('admin/css/app.min.css')}}" rel="stylesheet" type="text/css"  id="app-stylesheet" />
 </head>
 @php
-    use App\Models\SetupSite;
-    $get_settings = SetupSite::first();
+    $get_settings = setting();
 @endphp
 <body style="background-image: url({{asset($get_settings ? $get_settings->bg_image : null)}});
     background-size: cover;background-position: left;overflow-y: hidden;">
