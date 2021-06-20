@@ -14,7 +14,7 @@
 
             <div class="row" style="padding-top:15px;">
                 @foreach($getFiles as $files)
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" style="border:1px solid gray;padding:20px;" id="row{{$files->id}}">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 text-center" style="border:1px solid gray;padding:20px; background-color:{{ $files ? $files->color_code : null }}" id="row{{$files->id}}">
                     <a href="{{route('admin:files.details',$files->id)}}">
                         <i class="fa fa-folder-open" style="font-size:50px;" data-toggle="tooltip" title="Secret"></i>
                     </a>
