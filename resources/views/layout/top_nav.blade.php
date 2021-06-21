@@ -86,33 +86,33 @@
             <div class="logo-box">
                 <a href="{{route('admin:index')}}" class="logo text-center logo-dark">
                     <span class="logo-lg">
-                        @if(setting()->logo)
+                        @if(setting() && setting()->logo)
                         <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
                         @else
-                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        <span style="color:white;font-size:20px;">{{setting() ? setting()->site_name : 'FMS'}}</span>
                         @endif
                     </span>
                     <span class="logo-sm">
-                        @if(setting()->logo)
+                        @if(setting() && setting()->logo)
                         <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
                         @else
-                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        <span style="color:white;font-size:20px;">{{setting() ? setting()->site_name : 'FMS'}}</span>
                         @endif
                     </span>
                 </a>
                 <a href="{{route('admin:index')}}" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        @if(setting()->logo)
+                        @if(setting() && setting()->logo)
                         <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
                         @else
-                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        <span style="color:white;font-size:20px;">{{setting() ? setting()->site_name : 'FMS'}}</span>
                         @endif
                     </span>
                     <span class="logo-sm">
-                        @if(setting()->logo)
+                        @if(setting() && setting()->logo)
                         <img src="{{asset(setting()->logo)}}" alt="" style="height: 22px;display: initial;">
                         @else
-                        <span style="color:white;font-size:20px;">{{setting()->site_name}}</span>
+                        <span style="color:white;font-size:20px;">{{setting() ? setting()->site_name : 'FMS'}}</span>
                         @endif
                     </span>
                 </a>

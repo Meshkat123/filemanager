@@ -27,6 +27,16 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->SoftDeletes();
         });
+
+        // Insert some stuff
+        DB::table('users')->insert(
+            array(
+                'name'      => 'Meshkat',
+                'email'     => 'meshkat_cse@yahoo.com',
+                'phone'     => '01685871382',
+                'password'  => bcrypt(12345678)
+            )
+        );
     }
 
     /**
