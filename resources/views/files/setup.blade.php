@@ -63,7 +63,7 @@
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 									<div class="form-group">
 										<label>File Size</label>
-										<input type="text" class="form-control" name="file_size" placeholder="File Size" required="">
+										<input type="number" class="form-control" name="file_size" placeholder="File Size" required="">
 									</div>
 								</div>
 							</div>
