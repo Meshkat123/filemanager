@@ -46,13 +46,13 @@
 					<div class="card m-0">
 						<div class="card-body">
 							<div class="row gutters">
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
 									<div class="form-group">
 										<label>Tile</label>
 										<input type="text" class="form-control" name="title" placeholder="File Title" required="">
 									</div>
 								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+								<div class="col-xl-6 col-lg-4 col-md-4 col-sm-12 col-12">
 									<div class="form-group">
 										<label>Color Code (optional)</label>
 										<input type="color" class="form-control" name="color_code" placeholder="File Color Code">

@@ -25,37 +25,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <i class="mdi mdi-bell-outline noti-icon"></i>
-                        <span class="noti-icon-badge"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-                        <div class="dropdown-item noti-title">
-                            <h5 class="font-16 text-white m-0">
-                                <span class="float-right">
-                                    <a href="#" class="text-white">
-                                        <small>Clear All</small>
-                                    </a>
-                                </span>Notification
-                            </h5>
-                        </div>
-                        <div class="slimscroll noti-scroll">
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <div class="notify-icon bg-success">
-                                    <i class="mdi mdi-settings-outline"></i>
-                                </div>
-                                <p class="notify-details">New settings
-                                    <small class="text-muted">There are new settings available</small>
-                                </p>
-                            </a>
-                        </div>
-                        <a href="javascript:void(0);" class="dropdown-item text-primary notify-item notify-all">
-                            View all
-                            <i class="fi-arrow-right"></i>
-                        </a>
-                    </div>
-                </li>
+                
                 <li class="dropdown notification-list">
                     <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img src="{{asset(Auth::user() ? Auth::user()->image : null)}}" alt="user" class="rounded-circle" style="display: initial;">
